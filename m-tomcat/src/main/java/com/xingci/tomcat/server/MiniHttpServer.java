@@ -4,6 +4,8 @@ import com.xingci.tomcat.http.MiniHttpServletRequest;
 import com.xingci.tomcat.http.MiniHttpServletResponse;
 import com.xingci.tomcat.processor.MiniServletProcessor;
 import com.xingci.tomcat.processor.MiniStaticResourceProcessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,6 +20,8 @@ import java.net.Socket;
  */
 public class MiniHttpServer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MiniHttpServer.class);
+
     public static final String SHUTDOWN = "/SHUTDOWN";
 
     public static final int PORT = 8090;
@@ -26,8 +30,9 @@ public class MiniHttpServer {
 
     public static void main(String[] args) {
         MiniHttpServer httpServer = new MiniHttpServer();
-
+        LOGGER.info("Servlet 已启动");
         httpServer.await();
+
     }
 
     public void await() {

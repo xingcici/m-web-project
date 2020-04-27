@@ -12,6 +12,7 @@
         <module>m-tomcat</module>
         <module>m-spring</module>
         <module>m-mybatis</module>
+        <module>m-integration</module>
     </modules>
 
     <properties>

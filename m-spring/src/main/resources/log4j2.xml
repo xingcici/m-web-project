@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration status="debug">
+    <Properties>
+        <Property name="fileName">m_spring.log</Property>
+        <Property name="backupFilePatch">/data/logs/m-spring/</Property>
+    </Properties>
+
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %t [%p] %c (%F:%L) %msg%n"/>
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="${backupFilePatch}${fileName}" filePattern="${backupFilePatch}
+$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSSS}.log.gz">
+            <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss.SSS z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="20MB"/>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </appenders>
+    <loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </loggers>
+</configuration>
